@@ -325,3 +325,9 @@ textarea {
         margin: 0 4px;
     }
 }
+
+/*Tekst nad formularzem*/
+.mc-form-message {
+    color: #ffc107;
+    text-align: center;
+}
