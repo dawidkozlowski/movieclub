@@ -331,3 +331,18 @@ textarea {
     color: #ffc107;
     text-align: center;
 }
+
+.menu-item form {
+    display: inline;
+}
+
+.menu-item button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: #ffc107;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}

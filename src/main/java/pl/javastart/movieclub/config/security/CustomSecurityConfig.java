@@ -2,9 +2,11 @@ package pl.javastart.movieclub.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 @Configuration
 public class CustomSecurityConfig {
@@ -13,14 +15,25 @@ public class CustomSecurityConfig {
     private static final String ADMIN_ROLE = "ADMIN";
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/admin/**").hasAnyRole(EDITOR_ROLE, ADMIN_ROLE)
+        http.authorizeHttpRequests(authz -> authz
+                        .requestMatchers(
+                                PathPatternRequestMatcher.withDefaults().matcher("/admin/**")
+                        ).hasAnyRole(EDITOR_ROLE, ADMIN_ROLE)
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
                         .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutRequestMatcher(
+                                PathPatternRequestMatcher.withDefaults()
+                                        .matcher(HttpMethod.POST, "/logout")
+                        )
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
                 );
+
         return http.build();
     }
 
