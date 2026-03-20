@@ -2,7 +2,7 @@ package pl.javastart.movieclub.domain.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.stereotype.Service;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Getter
-@Service
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

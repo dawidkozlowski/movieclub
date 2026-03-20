@@ -346,3 +346,8 @@ textarea {
     cursor: pointer;
     text-decoration: none;
 }
+
+.registration-link {
+    text-align: center;
+    margin-top: 32px;
+}
