@@ -70,32 +70,6 @@ i powinna zajmować większość dostępnej przestrzeni
 }
 /*FOOTER END*/
 
-/*Responsive*/
-@media only screen and (min-width: 992px) {
-    /*Na ekranie powyżej 992px ukrywamy przycisk do rozwijania menu*/
-    .menu-toggle {
-        display: none;
-    }
-
-    /*Elementy menu nie powinny już zajmować całej szerokości, tylko być obok siebie*/
-    .menu-item {
-        display: block;
-        width: auto;
-        border-bottom: 0;
-    }
-
-    /*Kontener z logo powinien być rozciągnięty, a nawigacja po prawej stronie*/
-    .menu-logo-container {
-        flex: 1;
-    }
-
-    /*Na dużym ekranie ograniczamy szerokość do 960px*/
-    .main-content,
-    .menu {
-        align-self: center;
-        width: 960px;
-    }
-}
 /*Jumbotron START*/
 .jumbotron {
     background-image: url("../img/jumbotron2.jpg");
@@ -224,8 +198,6 @@ i powinna zajmować większość dostępnej przestrzeni
     padding: 16px;
     border: 1px #6d6d6d solid;
 }
-/*Movie.html END*/
-
 /*Odstęp pod nagłówkami sekcji*/
 .movie-section-heading {
     margin-bottom: 8px;
@@ -235,25 +207,7 @@ i powinna zajmować większość dostępnej przestrzeni
     display: block;
     margin: auto;
 }
-
-/*Responsive movie.html*/
-@media only screen and (min-width: 992px) {
-    /*Dodajemy rozkład elastyczny, elementy będą wyświetlane w jednym wierszu*/
-    .movie {
-        display: flex;
-        justify-content: space-between;
-    }
-    /*Przyciski powinny wyświetlać się obok siebie, bez zawijania wiersza*/
-    .movie-rating-buttons {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-    /*Większe odstępy między przyciskami*/
-    .movie-rating-button {
-        font-size: 1.2rem;
-        margin: 0 4px;
-    }
-}
+/*Movie.html END*/
 
 /*error pages START*/
 .error-container {
@@ -298,7 +252,8 @@ textarea {
 /*większe inputy z paddingami*/
 .mc-form > input,
 .mc-form > textarea,
-.mc-form > button {
+.mc-form > button,
+.mc-form > select { /*dodany selektor*/
     font-size: 1.2rem;
     color: black;
     padding: 8px;
@@ -309,9 +264,64 @@ textarea {
     color: #ffc107;
     border: none;
 }
+/*Większy checkbox*/
+.mc-form > input[type=checkbox] {
+    transform: scale(1.5);
+    margin-left: 5px;
+}
+/*Biały kolor tekstu przy wyborze pliku*/
+.mc-form > input[type=file] {
+    color: white;
+}
 
 .notification-bar {
     text-align: center;
     background-color: #ffc107;
     padding: 8px 0;
+}
+
+/*Responsive*/
+@media only screen and (min-width: 992px) {
+    /*Na ekranie powyżej 992px ukrywamy przycisk do rozwijania menu*/
+    .menu-toggle {
+        display: none;
+    }
+
+    /*Elementy menu nie powinny już zajmować całej szerokości, tylko być obok siebie*/
+    .menu-item {
+        display: block;
+        width: auto;
+        border-bottom: 0;
+    }
+
+    /*Kontener z logo powinien być rozciągnięty, a nawigacja po prawej stronie*/
+    .menu-logo-container {
+        flex: 1;
+    }
+
+    /*Na dużym ekranie ograniczamy szerokość do 960px*/
+    .main-content,
+    .menu {
+        align-self: center;
+        width: 960px;
+    }
+}
+
+/*Responsive movie.html*/
+@media only screen and (min-width: 992px) {
+    /*Dodajemy rozkład elastyczny, elementy będą wyświetlane w jednym wierszu*/
+    .movie {
+        display: flex;
+        justify-content: space-between;
+    }
+    /*Przyciski powinny wyświetlać się obok siebie, bez zawijania wiersza*/
+    .movie-rating-buttons {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    /*Większe odstępy między przyciskami*/
+    .movie-rating-button {
+        font-size: 1.2rem;
+        margin: 0 4px;
+    }
 }
