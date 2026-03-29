@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
+
 @Configuration
 public class CustomSecurityConfig {
     private static final String USER_ROLE = "USER";
@@ -34,6 +35,14 @@ public class CustomSecurityConfig {
                         )
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
+                )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers(
+                                PathPatternRequestMatcher.withDefaults().matcher("/h2-console/**")
+                        )
+                )
+                .headers(headers -> headers
+                        .frameOptions(frameOptions -> frameOptions.sameOrigin())
                 );
 
         return http.build();
