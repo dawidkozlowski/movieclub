@@ -3,8 +3,11 @@ package pl.javastart.movieclub.domain.movie;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
 import pl.javastart.movieclub.domain.genre.Genre;
 import jakarta.persistence.*;
+
+import java.sql.Types;
 
 @Entity
 @Getter
@@ -24,6 +27,7 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
+    @JdbcTypeCode(Types.TINYINT)
     private boolean promoted;
     private String poster;
 }
