@@ -1,5 +1,6 @@
 package pl.javastart.movieclub.domain.movie;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.javastart.movieclub.domain.genre.Genre;
 import pl.javastart.movieclub.domain.genre.GenreRepository;
@@ -11,20 +12,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MovieService {
 
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
     private final FileStorageService fileStorageService;
-
-    public MovieService(MovieRepository movieRepository,
-                        GenreRepository genreRepository,
-                        FileStorageService fileStorageService) {
-        this.movieRepository = movieRepository;
-        this.genreRepository = genreRepository;
-        this.fileStorageService = fileStorageService;
-    }
-
 
     public List<MovieDto> findAllPromotedMovies() {
         return movieRepository.findAllByPromotedIsTrue().stream()

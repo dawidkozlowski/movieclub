@@ -16,6 +16,8 @@ public class MovieDto {
     private String genre;
     private boolean promoted;
     private String poster;
+    private double avgRating;
+    private int ratingCount;
 
     public MovieDto(Long id,
                     String title,
@@ -25,7 +27,10 @@ public class MovieDto {
                     String youtubeTrailerId,
                     Integer releaseYear,
                     String genre,
-                    boolean promoted, String poster) {
+                    boolean promoted,
+                    String poster,
+                    Double avgRating,
+                    int ratingCount) {
         this.id = id;
         this.title = title;
         this.originalTitle = originalTitle;
@@ -36,5 +41,7 @@ public class MovieDto {
         this.genre = genre;
         this.promoted = promoted;
         this.poster = poster;
+        this.avgRating = avgRating;
+        this.ratingCount = ratingCount;
     }
 }

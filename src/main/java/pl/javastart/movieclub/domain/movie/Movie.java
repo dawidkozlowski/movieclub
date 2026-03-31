@@ -6,8 +6,11 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import pl.javastart.movieclub.domain.genre.Genre;
 import jakarta.persistence.*;
+import pl.javastart.movieclub.domain.rating.Rating;
 
 import java.sql.Types;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,6 +30,8 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
+    @OneToMany(mappedBy = "movie")
+    private Set<Rating> ratings = new HashSet<>();
     @JdbcTypeCode(Types.TINYINT)
     private boolean promoted;
     private String poster;
