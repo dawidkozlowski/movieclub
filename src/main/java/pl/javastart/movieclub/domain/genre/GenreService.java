@@ -26,10 +26,10 @@ public class GenreService {
     }
 
     @Transactional
-    public void addGenre(GenreDto genre) {
+    public void addGenre(GenreDto genreDto) {
         Genre genreToSave = new Genre();
-        genreToSave.setName(genre.getName());
-        genreToSave.setDescription(genre.getDescription());
+        genreToSave.setName(genreDto.getName());
+        genreToSave.setDescription(genreDto.getDescription());
         genreRepository.save(genreToSave);
     }
 }

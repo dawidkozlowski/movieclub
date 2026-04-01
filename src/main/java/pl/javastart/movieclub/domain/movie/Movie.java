@@ -1,5 +1,6 @@
 package pl.javastart.movieclub.domain.movie;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Movie {
 
     @Id
