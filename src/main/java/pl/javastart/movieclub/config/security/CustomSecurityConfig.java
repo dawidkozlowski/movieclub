@@ -22,6 +22,9 @@ public class CustomSecurityConfig {
                         .requestMatchers(
                                 PathPatternRequestMatcher.withDefaults().matcher("/admin/**")
                         ).hasAnyRole(EDITOR_ROLE, ADMIN_ROLE)
+                        .requestMatchers(
+                                PathPatternRequestMatcher.withDefaults().matcher("/ocen-film")
+                        ).authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
