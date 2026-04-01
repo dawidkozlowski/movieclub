@@ -12,7 +12,7 @@ import pl.javastart.movieclub.domain.movie.MovieService;
 import pl.javastart.movieclub.domain.movie.dto.MovieDto;
 import pl.javastart.movieclub.domain.rating.RatingService;
 
-import java.util.Optional;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,5 +35,15 @@ public class MovieController {
         }
 
         return "movie";
+    }
+
+    @GetMapping("/top10")
+    public String findTop10(Model model) {
+        List<MovieDto> top10Movies = movieService.findTopMovies(10);
+        model.addAttribute("heading", "Filmowe TOP10");
+        model.addAttribute("description", "Najwyżej oceniane filmy");
+        model.addAttribute("movies", top10Movies);
+
+        return "movie-listing";
     }
 }

@@ -1,6 +1,7 @@
 package pl.javastart.movieclub.domain.movie;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.javastart.movieclub.domain.genre.Genre;
 import pl.javastart.movieclub.domain.genre.GenreRepository;
@@ -51,5 +52,13 @@ public class MovieService {
             movie.setPoster(savedFileName);
         }
         movieRepository.save(movie);
+    }
+
+    public List<MovieDto> findTopMovies(int size) {
+        Pageable page = Pageable.ofSize(size);
+
+        return movieRepository.findTopByRating(page).stream()
+                .map(MovieDtoMapper::map)
+                .toList();
     }
 }
